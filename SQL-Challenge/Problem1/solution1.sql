@@ -1,1 +1,14 @@
--- write your solution here
+SELECT
+    MAX(CASE WHEN ID = (SELECT MAX(ID) FROM footer_values WHERE CAR IS NOT NULL)
+        THEN CAR END) AS CAR,
+
+    MAX(CASE WHEN ID = (SELECT MAX(ID) FROM footer_values WHERE LENGTH IS NOT NULL)
+        THEN LENGTH END) AS LENGTH,
+
+    MAX(CASE WHEN ID = (SELECT MAX(ID) FROM footer_values WHERE WIDTH IS NOT NULL)
+        THEN WIDTH END) AS WIDTH,
+
+    MAX(CASE WHEN ID = (SELECT MAX(ID) FROM footer_values WHERE HEIGHT IS NOT NULL)
+        THEN HEIGHT END) AS HEIGHT
+
+FROM footer_values;
