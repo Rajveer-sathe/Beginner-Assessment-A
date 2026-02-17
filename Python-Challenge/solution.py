@@ -1,7 +1,7 @@
-
 import pandas as pd
-url='https://raw.githubusercontent.com/supreme-leader-de/Beginner-Assessment-A/refs/heads/main/Python-Challenge/sales_data.csv'
-df=pd.read_csv(url,index_col=False)
+url="https://github.com/Rajveer-sathe/Beginner-Assessment-A/blob/main/Python-Challenge/sales_data.csv"
+
+df=pd.read_csv('D:\solutions\Beginner-Assessment-A\Python-Challenge\sales_data.csv',index_col=False)
 df=df.dropna(subset=['Order ID','Product'])
 df['Price Each']=df['Price Each'].fillna(df.groupby('Product')['Price Each'].transform('mean'))
 df['Order Date']=pd.to_datetime(df['Order Date'])
@@ -13,3 +13,4 @@ best_selling_products_per_month = monthly_product_sales_df.loc[monthly_product_s
 print(best_selling_products_per_month)
 monthly_revenue = df.groupby('Month')['total_sales'].sum()
 print(monthly_revenue)
+df.to_csv('cleaned_data.csv')
